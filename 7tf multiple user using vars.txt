@@ -1,0 +1,28 @@
+***************main****************
+
+provider "aws" {
+}
+
+resource "aws_iam_user" "demo" {
+  count = "${length(var.username)}"
+  name = "${element(var.username,count.index )}"
+}
+
+
+
+
+
+***************variable***********************
+
+variable "username" {
+  type = list(string)
+  default = ["tucker","annie","josh","sagar"]
+}
+
+
+
+
+
+*****************blog*****************
+
+https://medium.com/nerd-for-tech/creating-aws-iam-users-and-applying-policies-using-terraform-3138b23fddf0
